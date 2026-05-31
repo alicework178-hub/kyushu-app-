@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九州母女旅行 🌸</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body class="bg-[#FFF5F7] min-h-screen">
+    <div id="app">
+        <header class="p-8 bg-gradient-to-b from-pink-200 to-pink-100 rounded-b-[3rem] shadow-lg text-center">
+            <h1 class="text-3xl font-bold text-pink-600">🌸 九州母女之旅</h1>
+            <p class="text-pink-400 text-sm mt-1">溫馨時光管理系統</p>
+        </header>
+
+        <main class="p-4 pb-24 space-y-4">
+            <div v-for="item in itinerary" :key="item.id" 
+                 class="bg-white p-5 rounded-3xl shadow-sm border border-pink-100">
+                <div class="flex justify-between items-center mb-2">
+                    <h2 class="font-bold text-lg text-pink-500">{{ item.name }}</h2>
+                    <span class="bg-pink-50 text-pink-400 px-3 py-1 rounded-full text-xs font-bold">{{ item.time }}</span>
+                </div>
+                <a :href="item.mapLink" target="_blank" 
+                   class="block w-full bg-pink-500 text-white py-3 rounded-2xl text-center font-bold mt-3">
+                    📍 開啟導航
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    itinerary: [
+                        { id: 1, name: '博多運河城', time: '10:00', mapLink: 'https://maps.app.goo.gl/' },
+                        { id: 2, name: '由布院湯之坪街道', time: '14:00', mapLink: 'https://maps.app.goo.gl/' }
+                    ]
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
